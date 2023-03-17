@@ -1,6 +1,6 @@
 #map {
-  max-width: 600px;
-  height: 600px;
+  max-width: auto;
+  height: 90vh;
   margin: 0 auto;
   display: flex;
 }
