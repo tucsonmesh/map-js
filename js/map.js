@@ -1,7 +1,6 @@
-import { blueIcon, redIcon, greenIcon, orangeIcon, violetIcon, greyIcon, blackIcon } from "./map-markers.js";
+import { blueIcon, redIcon, greenIcon, orangeIcon, yellowIcon, violetIcon, greyIcon, blackIcon } from "./map-markers.js";
 
 const tucson = [32.2462035, -110.9719826];
-//const bcc = [32.2461891,-110.9698481];
 const bcc = [32.22841345679413, -110.98023737238493];
 const default_zoom = 14;
 
@@ -14,6 +13,7 @@ const pointToLayer = (feature, latlng) => {
     case "Purgatory":                  return L.marker(latlng, { icon: greyIcon });
     case "Submitted Requests":         return L.marker(latlng, { icon: blueIcon });
     case "Ready for Contact & Survey": return L.marker(latlng, { icon: redIcon });
+    case "DIY-Curious":                return L.marker(latlng, { icon: yellowIcon });
     case "Surveyed":                   return L.marker(latlng, { icon: greenIcon });
     case "Ready for Install":          return L.marker(latlng, { icon: orangeIcon });
     case "Installed":                  return L.marker(latlng, { icon: violetIcon });
@@ -68,6 +68,12 @@ const mapSomeData = (data) => {
     'onEachFeature': onEachFeature,
     'filter': (feature) => { return filterFeatureByStatus(feature, 'Ready for Contact & Survey') }
   }).addTo(map);
+  
+  const diy_curious = L.geoJSON(data['features'], {
+    'pointToLayer': pointToLayer,
+    'onEachFeature': onEachFeature,
+    'filter': (feature) => { return filterFeatureByStatus(feature, 'DIY-Curious') }
+  }).addTo(map);
 
   const surveyed = L.geoJSON(data['features'], {
     'pointToLayer': pointToLayer,
@@ -95,6 +101,7 @@ const mapSomeData = (data) => {
     'Purgatory': purgatory,
     'Submitted Requests': submitted,
     'Ready for Contact & Survey': ready_for_contact,
+    'DIY-Curious': diy_curious,
     'Surveyed': surveyed,
     'Ready for Install': ready_for_install,
     'Installed': installed

@@ -37,6 +37,15 @@ let orangeIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
+let yellowIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 let violetIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -64,4 +73,4 @@ let blackIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-export { blueIcon, redIcon, greenIcon, orangeIcon, violetIcon, greyIcon, blackIcon };
+export { blueIcon, redIcon, greenIcon, orangeIcon, yellowIcon, violetIcon, greyIcon, blackIcon };
