@@ -1,7 +1,8 @@
 import { blueIcon, redIcon, greenIcon, orangeIcon, violetIcon, greyIcon, blackIcon } from "./map-markers.js";
 
 const tucson = [32.2462035, -110.9719826];
-const bcc = [32.2461891,-110.9698481];
+//const bcc = [32.2461891,-110.9698481];
+const bcc = [32.22841345679413, -110.98023737238493];
 const default_zoom = 14;
 
 const pointToLayer = (feature, latlng) => {
@@ -48,7 +49,7 @@ const mapSomeData = (data) => {
   });
   osmTiles.addTo(map);
 
-  L.marker(bcc, { icon: blackIcon }).addTo(map);
+  const bccMarker = L.marker(bcc, { icon: blackIcon }).addTo(map);
 
   const purgatory = L.geoJSON(data['features'], {
     'pointToLayer': pointToLayer,
