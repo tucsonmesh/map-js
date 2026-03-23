@@ -17,6 +17,7 @@ const pointToLayer = (feature, latlng) => {
     case "Surveyed":                   return L.marker(latlng, { icon: greenIcon });
     case "Ready for Install":          return L.marker(latlng, { icon: orangeIcon });
     case "Installed":                  return L.marker(latlng, { icon: violetIcon });
+    case "Needs Maintenance or realignment": return L.marker(latlng, { icon: redIcon });
     default:                           return L.marker(latlng, { icon: greyIcon });
   }
 };
@@ -93,6 +94,13 @@ const mapSomeData = (data) => {
     'filter': (feature) => { return filterFeatureByStatus(feature, 'Installed') }
   }).addTo(map);
 
+  const needs_maintenance = L.geoJSON(data['features'], {
+    'pointToLayer': pointToLayer,
+    'onEachFeature': onEachFeature,
+    'filter': (feature) => { return filterFeatureByStatus(feature, 'Needs Maintenance or realignment') }
+  }).addTo(map);
+
+
   const baseMaps = {
     'OpenStreetMap': osmTiles
   };
@@ -104,7 +112,8 @@ const mapSomeData = (data) => {
     'DIY-Curious': diy_curious,
     'Surveyed': surveyed,
     'Ready for Install': ready_for_install,
-    'Installed': installed
+    'Installed': installed,
+    'Needs Maintenance or realignment': needs_maintenance
   };
 
   const layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
